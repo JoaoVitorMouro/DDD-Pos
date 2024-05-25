@@ -1,47 +1,62 @@
 # Atividade DDD
-## Nome: Renan Borba Santos - RA: 8094313
-## Nome: João Vitor Mouro   - RA: 8093252
-
+ - Nome: Renan Borba Santos          - RA: 8094313
+ - Nome: João Vitor Mouro            - RA: 8093252
+ - Nome: Deivid Inácio da Silva      - RA: 8093298
+ - Nome: Kawan Miguel Oliveira Silva - RA: 8093341
 
 # DDD ( Domain-driven Design )
 
 Design dirigido à domínio
 
-## Domínio
-O domínio (domain) refere-se a um conjunto de conceitos, regras, processos e comportamentos que são fundamentais para um determinado negócio ou aplicação. É a área de conhecimento que descreve e organiza todo o conhecimento e entendimento necessário para desenvolver um software que atenda às necessidades do negócio ou aplicação.
+# Domínio: 
+  - O domínio escolhido foi o de estudo com ênfase no contexto de tarefas/exercícios(criados pelos professores e respondidos pelos alunos). O sistema estuda-dev, surgiu a partir da necessidade de atender os alunos no ambiente educacional, com o objetivo de facilitar a comunicação entre eles, gerando assim as responsabilidades de criação e devolutiva de atividades  pelo professor e ao aluno a de entregar as atividades.
 
-O domínio é a base do DDD e é a partir dele que os modelos de negócio são construídos. Ele é composto por um conjunto de entidades, agregados, serviços e eventos que representam conceitos fundamentais do negócio. O conhecimento do domínio é essencial para que os desenvolvedores possam entender as necessidades do negócio e construir um software que atenda a essas necessidades de forma eficiente e eficaz.
+# Linguagem ubíqua: 
+  -usuário -> aluno/professor - tarefas -> exercise - respostas -> answer - grade -> nota
 
-Além disso, o DDD enfatiza a importância da comunicação clara e constante entre os desenvolvedores e os especialistas do domínio (conhecidos como especialistas do domínio ou domain experts), para que o conhecimento do domínio possa ser compartilhado e incorporado ao processo de desenvolvimento de software.
+# Entidades: answer, exercise, student e teacher
+  - Answer: {        
+      authorId: UniqueEntityID
+      exerciseId: UniqueEntityID
+      content: string
+      grade?: string
+      createdAt: Date
+      updatedAt?: Date
+    }
+- Exercise: {
+      authorId: UniqueEntityID
+      title: string
+      content: string
+      slug: Slug
+      createdAt: Date
+      updatedAt?: Date
+    }
+- Student: {
+      name: string
+    }
+- Teacher: {
+      name: string
+    }
+- Entity: {
+      _id: UniqueEntityID
+    }
+- UniqueEntityID: {
+      value: string (Random UUID)
+    }
+- Todas as entidades da aplicação herdam a entidade **Entity**, pois caso houver necessidade de trocar o ID das entidades (UUID, number, etc..) basta alterar em apenas um local
 
-- Domain Experts (Experts de domínio) -> Pessoas que entendem a problemática do software, lidam com isso diariamente 
-  - Conversa
 
-- Linguagem ubíqua -> Linguagem universal que todas as pessoas envolvidas conseguem entender
-  - Ex: Usuário -> Cliente, Fornecedor, Atendente, Barman, etc...
+# Contextos: 
+ - Tarefas/Exercícios
 
-- Agregados
+# Casos de Uso:
+ - Professor tem acesso a criação de Atividades, assim podendo criar atividades para os alunos escolhidos.
 
-- Value Objects -> Propriedades das entidades que possuem regras de negócios associadas a essas entidades (formatações, validações, etc...)
-  - Ex: criação de um slug do título do exercício -> exige formatação e validação próprias, e inicialmente pode ser criado a partir do título. 
-      Porém, futuramente pode ser alterado para que o usuário fornaça o slug.
+ - Aluno consegue ver atividades designadas a ele, conseguindo responder as atividades.
 
-- Eventos de domínio
-- Subdomínio (Bounded Context)
-- Entidades
-- Casos de uso
+ - Professor tem acesso as respostas dos alunos de cada atividade criada por ele.
 
-### Entidades
-  - Obtidas através da **Conversa**
-  - Tudo que é factível dentro da aplicação, algo que será mantido
-
-### Casos de uso
-  - Obtidas através da **Conversa**
-  - Descrição de uma sequência de ações que um usuário ou sistema realiza para atingir um objetivo
-
-  Ex: _EU_ preciso _RESPONDER_ a atividade do _PROFESSOR_.
-  *** EU e PROFESSOR -> Entidades ***
-  *** RESPONDER ATIVIDADE -> Caso de uso ***
+ - Professor pode dar nota as respostas enviadas pelos alunos na atividade
 
 ## Comparações
 ### MVC ( Model View Controller )
