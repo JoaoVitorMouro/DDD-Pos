@@ -1,3 +1,7 @@
+# Atividade DDD
+## Nome: Renan Borba Santos - RA: 8094313
+## Nome: João Vitor Mouro   - RA: 8093252
+
 ***  Design de Software != Arquitetura de Software ***
 
 # DDD ( Domain-driven Design )
